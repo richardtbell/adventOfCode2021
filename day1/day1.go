@@ -1,10 +1,8 @@
 package day1
 
 import (
-	"fmt"
-	"os"
+	"adventOfCode2021/fileInteractions"
 	"strconv"
-	"strings"
 )
 
 func getNumberIncreases(inputArr []int) int {
@@ -37,20 +35,12 @@ func convertToInts(strArr []string) (values []int) {
 	return
 }
 
-func readValuesFromFile() []int {
-	contents, err := os.ReadFile("day1/input.txt")
-	if err != nil {
-		fmt.Println("Error", err)
-		os.Exit(1)
-	}
-	strArr := strings.Split(string(contents), "\n")
-	return convertToInts(strArr)
-}
-
 func CalculatePart1() int {
-	return getNumberIncreases(readValuesFromFile())
+	strVals := fileInteractions.ReadValuesFromFile("day1/input.txt")
+	return getNumberIncreases(convertToInts(strVals))
 }
 
 func CalculatePart2() int {
-	return getNumberIncreasesWithSlidingWindow(readValuesFromFile())
+	strVals := fileInteractions.ReadValuesFromFile("day1/input.txt")
+	return getNumberIncreasesWithSlidingWindow(convertToInts(strVals))
 }
