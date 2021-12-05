@@ -5,6 +5,7 @@ import (
 	"adventOfCode2021/day2"
 	"adventOfCode2021/day3"
 	"adventOfCode2021/day4"
+	"adventOfCode2021/day5"
 	"fmt"
 )
 
@@ -21,4 +22,7 @@ func main() {
 	fmt.Printf("\nDay 4:\n")
 	fmt.Printf("\nPart 1 result: %+v\n", day4.CalculatePart1())
 	fmt.Printf("\nPart 2 result: %+v\n", day4.CalculatePart2())
+	fmt.Printf("\nDay 5:\n")
+	fmt.Printf("\nPart 1 result: %+v\n", day5.CalculatePart1())
+	// fmt.Printf("\nPart 2 result: %+v\n", day5.CalculatePart2())
 }
