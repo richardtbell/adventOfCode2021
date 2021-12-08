@@ -30,11 +30,26 @@ func TestGetNumberRange(t *testing.T) {
 
 func TestConvertToMatrix(t *testing.T) {
 	input := fileInteractions.ReadValuesFromFile("input_test.txt")
-	result := convertToMatrix(input)
-	expected := Matrix{Row{0, 0, 0, 0, 0, 0, 0, 1, 0, 0}, Row{0, 0, 1, 0, 0, 0, 0, 1, 0, 0}, Row{0, 0, 1, 0, 0, 0, 0, 1, 0, 0}, Row{0, 0, 0, 0, 0, 0, 0, 1, 0, 0}, Row{0, 1, 1, 2, 1, 1, 1, 2, 1, 1}, Row{0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, Row{0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, Row{0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, Row{0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, Row{2, 2, 2, 1, 1, 1, 0, 0, 0, 0}}
+	result1 := convertToMatrix(input, false)
+	expectedPart1 := Matrix{Row{0, 0, 0, 0, 0, 0, 0, 1, 0, 0}, Row{0, 0, 1, 0, 0, 0, 0, 1, 0, 0}, Row{0, 0, 1, 0, 0, 0, 0, 1, 0, 0}, Row{0, 0, 0, 0, 0, 0, 0, 1, 0, 0}, Row{0, 1, 1, 2, 1, 1, 1, 2, 1, 1}, Row{0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, Row{0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, Row{0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, Row{0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, Row{2, 2, 2, 1, 1, 1, 0, 0, 0, 0}}
+	if !reflect.DeepEqual(result1, expectedPart1) {
+		t.Fatalf("Expected \n%+v\ngot \n%+v", expectedPart1, result1)
+	}
 
-	if !reflect.DeepEqual(result, expected) {
-		t.Fatalf("Expected \n%+v\ngot \n%+v", expected, result)
+	result2 := convertToMatrix(input, true)
+	expectedPart2 := Matrix{
+		Row{1, 0, 1, 0, 0, 0, 0, 1, 1, 0},
+		Row{0, 1, 1, 1, 0, 0, 0, 2, 0, 0},
+		Row{0, 0, 2, 0, 1, 0, 1, 1, 1, 0},
+		Row{0, 0, 0, 1, 0, 2, 0, 2, 0, 0},
+		Row{0, 1, 1, 2, 3, 1, 3, 2, 1, 1},
+		Row{0, 0, 0, 1, 0, 2, 0, 0, 0, 0},
+		Row{0, 0, 1, 0, 0, 0, 1, 0, 0, 0},
+		Row{0, 1, 0, 0, 0, 0, 0, 1, 0, 0},
+		Row{1, 0, 0, 0, 0, 0, 0, 0, 1, 0},
+		Row{2, 2, 2, 1, 1, 1, 0, 0, 0, 0}}
+	if !reflect.DeepEqual(result2, expectedPart2) {
+		t.Fatalf("Expected \n%+v\ngot \n%+v", expectedPart2, result2)
 	}
 }
 
